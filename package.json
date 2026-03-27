@@ -1,0 +1,19 @@
+{
+  "name": "LostTrack",
+  "version": "1.0.0",
+  "description": "Lost and found Application for study propose",
+  "main": "index.js",
+  "repository": "https://github.com/Eduildo/Lost-Track.git",
+  "author": "Eduildo Lima",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
