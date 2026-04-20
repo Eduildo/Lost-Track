@@ -1,7 +1,7 @@
 {
-  "name": "LostTrack",
+  "name": "lost-track",
   "version": "1.0.0",
-  "description": "Lost and found Application for study propose",
+  "description": "Lost and found is an application for study propose",
   "main": "index.js",
   "repository": "https://github.com/Eduildo/Lost-Track.git",
   "author": "Eduildo Lima",
@@ -11,8 +11,11 @@
     "dev": "nodemon server"
   },
   "dependencies": {
-    "env": "^0.0.2",
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^17.3.1",
     "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.20.0",
     "sequelize": "^6.37.8",
     "uuid": "^13.0.0"
   },
