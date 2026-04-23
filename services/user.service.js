@@ -38,6 +38,33 @@ const getAllUsers = async () => {
   });
 };
 
+const getProfile = async (userId) => {
+  const user = await User.findByPk(userId, {
+    attributes: { exclude: ["password_hash"] },
+  });
+  if (!user) throw new Error("User não encontrado");
+  return user;
+};
+
+const updateProfile = async (userId, data) => {
+  const user = await User.findByPk(userId);
+
+  if (!user) throw new Error("User não encontrado");
+  user.name = data.name || user.name;
+  user.phone = data.phone || user.phone;
+  user.picture = data.picture || user.picture;
+  await user.save();
+  return user;
+};
+//
+const updatePicture = async (userId, pictureUrl) => {
+  const user = await User.findByPk(userId);
+  if (!user) throw new Error("User não encontrado");
+  user.picture = pictureUrl;
+  await user.save();
+  return user;
+};
+//
 const blockUser = async (userId) => {
   const user = await User.findByPk(userId);
 
@@ -53,5 +80,8 @@ module.exports = {
   registerUser,
   loginUser,
   getAllUsers,
+  getProfile,
+  updateProfile,
+  updatePicture,
   blockUser,
 };

@@ -32,6 +32,34 @@ exports.profile = async (req, res) => {
   res.json(req.user);
 };
 
+exports.userProfile = async (req, res) => {
+  try {
+    const user = await userService.getProfile(req.user.id);
+    res.json(user);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
+// Também Preciso implementar a atualização de password depois
+exports.updateProfile = async (req, res) => {
+  try {
+    const user = await userService.updateProfile(req.user.id, req.body);
+    res.json(user);
+  } catch (error) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
+exports.updatePicture = async (req, res) => {
+  try {
+    const user = await userService.updatePicture(req.user.id, req.body.picture);
+    res.json(user);
+  } catch {
+    res.status(400).json({ error: err.message });
+  }
+};
+
 exports.getAll = async (req, res) => {
   const users = await userService.getAllUsers();
   res.json(users);
