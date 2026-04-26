@@ -21,13 +21,13 @@ const registerUser = async ({ name, email, password, phone }) => {
 const loginUser = async (email, password) => {
   const user = await User.findOne({ where: { email } });
 
-  if (!user) throw new Error("Utilizador não encontrado");
+  if (!user) throw new Error("Utilizador ou Password inválida");
 
   if (user.is_blocked) throw new Error("Por favor contacta o administrador");
 
   const valid = await verifyPassword(password, user.password_hash);
 
-  if (!valid) throw new Error("Utilizador ou Password inválida");
+  if (!valid || !user) throw new Error("Utilizador ou Password inválida");
 
   return user;
 };
